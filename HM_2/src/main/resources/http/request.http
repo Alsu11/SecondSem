@@ -1,14 +1,24 @@
-POST http://localhost:8080//sign-up
+POST http://localhost:8080/park
 Content-Type: application/json
 
 {
-  "email" : "q@as.ru",
-  "firsName" : "Q_name",
-  "lastName" : "Q_faname",
-  "password" : "123",
-  "money" : 123
+  "model" : "model",
+  "carNumber" : "12",
+  "color" : "yellow",
+  "amountOfHours" : 2,
+  "userId" : 1,
+  "address" : "Du"
 }
 
 ###
 
-GET http://localhost:8080/slots?address=DU
+GET http://localhost:8080/slots?address=Du
+
+###
+
+POST http://localhost:8080/can-go
+Content-Type: application/json
+
+{
+  "carNumber" : ""
+}

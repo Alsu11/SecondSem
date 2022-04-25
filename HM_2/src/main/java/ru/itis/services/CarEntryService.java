@@ -1,7 +1,8 @@
 package ru.itis.services;
 
-import ru.itis.dto.EntryForm;
+import ru.itis.dto.LeaveDto;
+import ru.itis.dto.CarEntryDto;
 
 public interface CarEntryService {
-    String canCarGoOut(EntryForm entryForm);
+    CarEntryDto canCarGoOut(LeaveDto leave);
 }

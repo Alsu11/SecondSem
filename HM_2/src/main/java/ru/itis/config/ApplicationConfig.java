@@ -22,6 +22,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Objects;
 import java.util.Properties;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 @Configuration
 @ComponentScan("ru.itis")
@@ -87,6 +90,12 @@ public class ApplicationConfig {
         config.setDriverClassName(environment.getProperty("db.driver-class-name"));
         config.setMaximumPoolSize(Integer.parseInt(Objects.requireNonNull(environment.getProperty("db.hikari.pool-size"))));
         return config;
+    }
+
+    @Bean
+    public Validator getHibernateValidator() {
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        return factory.getValidator();
     }
 }
 
