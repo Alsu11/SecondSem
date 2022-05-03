@@ -11,14 +11,22 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name = "users")
-public class User extends AbstractEntity{
+public class User extends AbstractEntity {
+
+    public enum Role {
+        USER, ADMIN
+    };
+
+    public enum State {
+        CONFIRMED, DELETED, BANNED
+    };
 
     private Long id;
 
     private String email;
 
-    @Column(name = "hash_password")
-    private String hashPassword;
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "first_name")
     private String firstName;
@@ -27,4 +35,10 @@ public class User extends AbstractEntity{
     private String lastName;
 
     private Double money;
+
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
+
+    @Enumerated(value = EnumType.STRING)
+    private State state;
 }

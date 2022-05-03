@@ -11,6 +11,8 @@ import ru.itis.exceptions.AlreadyExistsException;
 import ru.itis.exceptions.NotFoundException;
 import ru.itis.services.UsersService;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 public class UsersController {
@@ -18,26 +20,7 @@ public class UsersController {
     private final UsersService usersService;
 
     @PostMapping(value = "/sign-up")
-    public UserDto signUp(@RequestBody SignUpForm signUpForm) {
-        try {
-            String hashPassword = String.valueOf(signUpForm.getPassword().hashCode());
-            signUpForm.setPassword(hashPassword);
-            return usersService.signUp(signUpForm);
-        } catch (AlreadyExistsException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    @PostMapping(value = "/sign-in")
-    public UserDto signIn(@RequestBody SignInForm signInForm) {
-        try {
-            String hashPassword = String.valueOf(signInForm.getPassword().hashCode());
-            signInForm.setPassword(hashPassword);
-            return usersService.signIn(signInForm);
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
+    public UserDto signUp(@Valid @RequestBody SignUpForm signUpForm) {
+        return usersService.signUp(signUpForm);
     }
 }

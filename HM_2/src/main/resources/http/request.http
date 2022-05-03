@@ -3,11 +3,11 @@ Content-Type: application/json
 
 {
   "model" : "model",
-  "carNumber" : "12",
+  "carNumber" : "t465r123",
   "color" : "yellow",
   "amountOfHours" : 2,
   "userId" : 1,
-  "address" : "Du"
+  "address" : "SG9"
 }
 
 ###
@@ -20,5 +20,14 @@ POST http://localhost:8080/can-go
 Content-Type: application/json
 
 {
-  "carNumber" : ""
+  "carNumber" : "ghj"
+}
+
+###
+POST http://localhost:8080/sign-up
+Content-Type: application/json
+
+{
+  "email" : "au@gmail.com",
+  "password" : "1344e"
 }

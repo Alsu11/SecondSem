@@ -12,8 +12,10 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@CorrectCarNumber(carNumber = "carNumber")
 public class LeaveDto {
+
     @NotBlank(message = "The car number of must be filled in")
+    @CorrectCarNumber(carNumber = "carNumber")
     private String carNumber;
+
 }

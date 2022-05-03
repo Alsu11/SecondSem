@@ -18,6 +18,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/parking")
 public class ParkingsController {
 
     private final ParkingsService parkingsService;

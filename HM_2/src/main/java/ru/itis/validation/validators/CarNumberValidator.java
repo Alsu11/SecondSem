@@ -17,7 +17,8 @@ public class CarNumberValidator implements ConstraintValidator<CorrectCarNumber,
 
     @Override
     public boolean isValid(Object object, ConstraintValidatorContext context) {
-        String regex = "[а-я]\\d{3}[а-я]{2}\\d{2,3}";
+        this.carNumber = (String) object;
+        String regex = "[a-z]\\d{3}[a-z]{2}\\d{2,3}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(carNumber);
         return matcher.matches();

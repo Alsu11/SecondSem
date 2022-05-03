@@ -9,11 +9,11 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Target(ElementType.TYPE)
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = CarNumberValidator.class)
 public @interface CorrectCarNumber {
-    String message() default "DEFAULT AAAAAAA";
+    String message() default "car number";
     String carNumber() default "";
     Class<? extends Payload>[] payload() default {};
     Class<?>[] groups() default { };
