@@ -1,0 +1,33 @@
+POST http://localhost:8080/park
+Content-Type: application/json
+
+{
+  "model" : "model",
+  "carNumber" : "t465r123",
+  "color" : "yellow",
+  "amountOfHours" : 2,
+  "userId" : 1,
+  "address" : "SG9"
+}
+
+###
+
+GET http://localhost:8080/slots?address=Du
+
+###
+
+POST http://localhost:8080/can-go
+Content-Type: application/json
+
+{
+  "carNumber" : "ghj"
+}
+
+###
+POST http://localhost:8080/sign-up
+Content-Type: application/json
+
+{
+  "email" : "au@gmail.com",
+  "password" : "1344e"
+}

@@ -1,0 +1,47 @@
+POST http://localhost/parking/park
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZSI6IlVTRVIiLCJzdGF0ZSI6IkNPTkZJUk1FRCIsImVtYWlsIjoiYXVAZ21haWwuY29tIn0.5mCfV6oQWX3gqNp23i07wca6OZn_-kCBNQ_nGK_Oy60
+
+{
+  "model" : "model",
+  "carNumber" : "t300123",
+  "color" : "yellow",
+  "amountOfHours" : 2,
+  "userId" : 1,
+  "address" : "Du"
+}
+
+###
+
+GET http://localhost/parking/slots?address=Du
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZSI6IlVTRVIiLCJzdGF0ZSI6IkNPTkZJUk1FRCIsImVtYWlsIjoiYXVAZ21haWwuY29tIn0.5mCfV6oQWX3gqNp23i07wca6OZn_-kCBNQ_nGK_Oy60
+
+###
+
+POST http://localhost/car-entry/can-go
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZSI6IlVTRVIiLCJzdGF0ZSI6IkNPTkZJUk1FRCIsImVtYWlsIjoiYXVAZ21haWwuY29tIn0.5mCfV6oQWX3gqNp23i07wca6OZn_-kCBNQ_nGK_Oy60
+
+{
+  "carNumber" : "t465ty123"
+}
+###
+POST http://localhost/sign-up
+Content-Type: application/json
+
+{
+  "email" : "au@gmail.com",
+  "password" : "1344e",
+  "firstName" : "Alsu",
+  "lastName" : "Yumadilova"
+}
+
+###
+
+POST http://localhost/login
+Content-Type: application/json
+
+{
+  "email" : "au@gmail.com",
+  "password" : "1344e"
+}
