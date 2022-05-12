@@ -1,5 +1,11 @@
 package ru.itis.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -16,6 +22,8 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Tag(name = "Парковка", description = "Контроллер, связанный с парковкой")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/parking")
@@ -23,17 +31,51 @@ public class ParkingsController {
 
     private final ParkingsService parkingsService;
 
+
+    @Operation(summary = "Получение количества свободных мест на порковке по определенному аддресу")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Количество свободных мест",
+                    content = {
+                        @Content(mediaType = "application/json",
+                                schema =
+                                @Schema(implementation = Integer.class)
+                        )
+                    }
+            )
+    })
     @GetMapping("/slots")
     public Integer getSlotsCar(@RequestParam("address") String address) {
         return parkingsService.getSlotsCount(address);
     }
 
+
+    @Operation(summary = "Парковка машины")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Машина припакрована",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema =
+                                    @Schema(implementation = CarEntryDto.class)
+                            )
+                    }
+            )
+    })
     @PostMapping( "/park")
     public CarEntryDto parkCar(@Valid @RequestBody EntryForm entryForm) {
         return parkingsService.parkCar(entryForm);
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "400", description = "Неккоректный запрос",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema =
+                                    @Schema(implementation = ValidationExceptionResponse.class)
+                            )
+                    }
+            )
+    })
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ValidationExceptionResponse handleException(MethodArgumentNotValidException exception) {
         int i = 0;

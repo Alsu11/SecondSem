@@ -57,7 +57,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                     sendForbidden(response);
                 }
             } else {
-                logger.warn("Wrong token format fffffff");
+                logger.warn("Wrong token format");
                 sendForbidden(response);
             }
         }

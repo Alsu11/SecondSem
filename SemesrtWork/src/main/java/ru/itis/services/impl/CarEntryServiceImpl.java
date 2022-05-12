@@ -25,9 +25,11 @@ public class CarEntryServiceImpl implements CarEntryService {
     public CarEntryDto canCarGoOut(LeaveDto leave) {
         CarEntry carEntry = carEntryRepository.findByCarNumber(leave.getCarNumber())
                 .orElseThrow(() -> new NotFoundException(ErrorEntity.CAR_ARE_NOT_IN_THIS_PARKING));
+
         if(carEntry.getEndTime().compareTo(Instant.now()) <= 0) {
             return carEntryMapper.toResponse(carEntry);
         }
+
         return null;
     }
 
